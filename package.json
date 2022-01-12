@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "A Node.js command-line app that takes information about employees and dynamically generates summeries for each employee on an HTML page. ## Image ![Image of Team Profile Generator.](/assets/code-quiz-screenshot.png) ## Built With * Node.js * Jest ## Walk through video",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilypier/team-profile-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilypier/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/emilypier/team-profile-generator#readme",
+  "devDependencies": {
+    "jest": "^27.4.7"
+  }
+}
