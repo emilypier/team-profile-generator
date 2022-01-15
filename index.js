@@ -55,7 +55,7 @@ function buildTeam(){
 }
 
 function createHtml(){
-  console.log(team)
+  console.log(team) //message vinnie
   
 }
 
