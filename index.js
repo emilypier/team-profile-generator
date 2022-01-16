@@ -1,12 +1,12 @@
-// name, id, email, getName(), getId(), getEmail(), getRole() Returns 'Employee'
 const fs = require("fs");
 const inquirer = require("inquirer");
 const path = require("path");
+const generateHTML = require('./src/generateHTML');
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-const team = []
+const teamArray = []
 
 //initializes app
 function init() {
@@ -37,10 +37,10 @@ function init() {
     const email = managerResponse.managerEmail
     const github = managerResponse.managerGithub
     const manager = new Manager(name, id, email, github)
-      team.push(manager)
+      teamArray.push(manager)
 
     buildTeam()
-    // writeToFile('template.html', generateMarkdown({ ...userResponse }))
+    // writeToFile('template.html', generateHTML({ ...userResponse }))
   });
 };
 
@@ -98,7 +98,7 @@ function addEngineer() {
     const email = engineerResponse.engineerEmail
     const github = engineerResponse.engineerGithub
     const engineer = new Engineer(name, id, email, github)
-      team.push(engineer)
+      teamArray.push(engineer)
       
       buildTeam()
   });
@@ -132,15 +132,26 @@ function addIntern() {
     const email = internResponse.internEmail
     const school = internResponse.internSchool
     const intern = new Intern(name, id, email, school)
-      team.push(intern)
+      teamArray.push(intern)
 
       buildTeam()
   });
 };
 
 function createHtml(){
-  console.log(team)
-  
+  generateHTML(teamArray);
+  console.log(teamArray);
 }
+
+// function to generate HTML page file using file system 
+const writeFile = data => {
+  fs.writeFile('./dist/index.html', data, err => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Your team profile has been created! Check out the index.html in the dist folder.")
+    }
+  })
+}; 
 
 init();
