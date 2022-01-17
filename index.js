@@ -9,7 +9,7 @@ const Intern = require("./lib/Intern");
 const teamArray = []
 
 //initializes app
-function init() {
+function addManager() {
   inquirer.prompt([
     {
       type: 'input',
@@ -40,7 +40,6 @@ function init() {
       teamArray.push(manager)
 
     buildTeam()
-    // writeToFile('template.html', generateHTML({ ...userResponse }))
   });
 };
 
@@ -48,7 +47,7 @@ function buildTeam(){
   inquirer.prompt([
     {
       type: 'list',
-      name: "userChoice",
+      name: "role",
       message: "Who would you like to add?",
       choices:[ 
         "Engineer", 
@@ -57,7 +56,7 @@ function buildTeam(){
       ]
     }
   ]).then((data)=>{
-    switch(data.userChoice){
+    switch(data.role){
       case "Engineer":
         addEngineer();
       break;
@@ -138,20 +137,35 @@ function addIntern() {
   });
 };
 
+//writes HTML file
+function writeToFile(fileName, data) {
+  fs.writeFileSync(path.join(process.cwd(), fileName), data);
+}
+
 function createHtml(){
   generateHTML(teamArray);
   console.log(teamArray);
-}
-
-// function to generate HTML page file using file system 
-const writeFile = data => {
-  fs.writeFile('./dist/index.html', data, err => {
+  
+  fs.writeFile('teamprofile.html', data, (err) => {
     if (err) {
       console.log(err);
+    // when the profile has been created 
     } else {
-      console.log("Your team profile has been created! Check out the index.html in the dist folder.")
-    }
-  })
-}; 
+      console.log("Your team profile has been successfully created! Please check out the index.html")
+      }
+    })
+};
 
-init();
+
+
+
+// //initializes app
+// function init() {
+//   addManager(manager).then
+//   inquirer.prompt(questions).then((userResponse) => {
+//     console.log(userResponse);
+//     writeToFile('template.html', generateHTML({ ...userResponse }))
+//   });
+// }
+
+addManager();

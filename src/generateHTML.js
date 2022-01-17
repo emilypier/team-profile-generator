@@ -1,5 +1,3 @@
-const cardArray = [];
-
 //generate manager card
 function generateMgr(manager) {
   return `
@@ -54,7 +52,6 @@ function generateInt(intern){
 
 // push array to page 
 generateHTML = (data) => {
-
   // array of employee card HTML
   cardArray = []; 
 
@@ -77,18 +74,17 @@ generateHTML = (data) => {
       cardArray.push(internCard);
     }
   }
-    // joining strings 
-    const employeeCards = cardArray.join('')
+    //combines HTML code for cards together and converts to a string 
+    let employeeCards = cardArray.join('')
 
     // return to generated page
-    const generateTeam = generatePage(employeeCards); 
-    return generateTeam;
+    generatePage(employeeCards); 
+    console.log("just ran generatePage with employeeCards")
 };
 
-//putting all the cards into the page HTML
+//putting all the cards' HTML into the page HTML
 function generatePage(employeeCards){
-  return
-  `
+  return `
   <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -110,7 +106,8 @@ function generatePage(employeeCards){
         </div>
     </body>
   </html>
-  `
+  `;
 };
+
 
 module.exports = generateHTML;
