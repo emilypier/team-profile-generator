@@ -156,16 +156,4 @@ function createHtml(){
     })
 };
 
-
-
-
-// //initializes app
-// function init() {
-//   addManager(manager).then
-//   inquirer.prompt(questions).then((userResponse) => {
-//     console.log(userResponse);
-//     writeToFile('template.html', generateHTML({ ...userResponse }))
-//   });
-// }
-
 addManager();
